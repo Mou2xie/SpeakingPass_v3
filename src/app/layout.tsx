@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PT_Serif, Bree_Serif, } from "next/font/google";
-import { Nav } from "@/components/Nav"
+import { NavBar } from "@/components/NavBar"
 import "./globals.css";
 
 const ptSerif = PT_Serif({
@@ -31,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${breeSerif.variable} ${ptSerif.variable} antialiased`}
       >
-        <Nav />
+        <NavBar />
         {children}
       </body>
     </html>
