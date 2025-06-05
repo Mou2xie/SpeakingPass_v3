@@ -2,8 +2,9 @@
 
 import { RiMenu2Line } from "@remixicon/react"
 import { useState } from "react"
+import type { TLanguages } from "@/assets/languages"
 
-export const MNavMenu = ({ lan }: { lan: string }) => {
+export const MNavMenu = ({ lan }: { lan: TLanguages }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
