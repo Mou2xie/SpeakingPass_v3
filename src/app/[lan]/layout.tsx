@@ -1,17 +1,19 @@
 import { NavBar } from "@/components/NavBar";
-import { TLanguages, supportedLanguages } from "@/assets/languages";
+import { Footer } from '@/components/Footer';
+import { Main } from "@/components/Main";
+import { validateLanguage } from '@/libs/functions';
 
 export default async function Layout({ params, children }: { params: Promise<{ lan: string }>, children: React.ReactNode }) {
     const { lan } = await params;
-    const validLan: TLanguages = validateLanguage(lan);
+    const validLan = validateLanguage(lan);
     return (
         <>
             <NavBar lan={validLan}></NavBar>
-            {children}
+            <Main>
+                {children}
+            </Main>
+            <Footer></Footer>
         </>
     )
 }
 
-const validateLanguage: (lan: string) => TLanguages = (lan: string) => {
-    return supportedLanguages.includes(lan as TLanguages) ? (lan as TLanguages) : "en";
-}

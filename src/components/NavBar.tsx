@@ -1,7 +1,10 @@
+'use client'
+
 import Image from "next/image";
 import { LanguagePicker } from "./LanguagePicker";
 import { MNavMenu } from './MobileNavMenu';
 import type { TLanguages } from "@/assets/languages";
+import { useEffect, useState } from 'react';
 
 const text: Record<TLanguages, {
     scoreBooster: string;
@@ -36,9 +39,24 @@ const text: Record<TLanguages, {
 };
 
 export const NavBar = ({ lan }: { lan: TLanguages }) => {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
-        <nav className="flex items-center h-16 mx-5 lg:w-[1000px] lg:mx-auto">
+        <nav className={`
+            flex items-center h-16 mx-5 lg:w-[1000px] lg:mx-auto
+            fixed top-0 left-0 right-0 z-1
+            transition-all duration-300
+            ${isScrolled ? 'bg-white' : 'bg-transparent'}
+        `}>
             <a href={`/${lan}`} className=" hidden lg:inline">
                 <Image src="/logo.svg" alt="logo" width={200} height={100} />
             </a>
