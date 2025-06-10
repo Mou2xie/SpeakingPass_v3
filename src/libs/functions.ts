@@ -1,4 +1,4 @@
-import { TLanguages, supportedLanguages } from "../assets/languages";
+import { TLanguages, supportedLanguages } from "../models/languages";
 
 type TValidateLanguage = (lan: string) => TLanguages;
 

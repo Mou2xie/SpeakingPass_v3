@@ -4,24 +4,7 @@ import { RiMailFill } from "@remixicon/react"
 
 export const Footer = () => {
     return (
-        // <footer className="footer sm:footer-horizontal bg-base-300 items-center p-5 lg:px-30 ">
-        //     <aside className="text-text-light">
-        //         <p>Copyright © {new Date().getFullYear()} - SpeakingPass All right reserved</p>
-        //     </aside>
-        //     <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-        //         <a className="link link-hover" href="https://lingopick.com">
-        //             <RiMailFill size={25} className=" text-text-main" />
-        //         </a>
-        //         <a className="link link-hover" href="https://x.com/Jedxie3">
-        //             <RiTwitterFill size={25} className=" text-text-main" />
-        //         </a>
-        //         <a className="link link-hover" href="www.linkedin.com/in/yongjie-xie-95919632b">
-        //             <RiLinkedinBoxFill size={25} className=" text-text-main" />
-        //         </a>
-        //     </nav>
-        // </footer>
-
-        <footer className="footer sm:footer-horizontal bg-base-300 p-10">
+        <footer className=" footer sm:footer-horizontal bg-base-300 p-10">
             <aside>
                 <p className="text-text-main">
                     SpeakingPass

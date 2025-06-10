@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { RiArrowDropDownLine } from "@remixicon/react";
-import type { TLanguages } from "@/assets/languages";
+import type { TLanguages } from "@/models/languages";
 
 const languageOptions:{
     name: string;

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { LanguagePicker } from "./LanguagePicker";
 import { MNavMenu } from './MobileNavMenu';
-import type { TLanguages } from "@/assets/languages";
+import type { TLanguages } from "@/models/languages";
 import { useEffect, useState } from 'react';
 
 const text: Record<TLanguages, {
