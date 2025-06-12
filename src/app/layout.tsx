@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PT_Serif, Bree_Serif, } from "next/font/google";
+import { PT_Serif, Bree_Serif, Oswald } from "next/font/google";
 import "./globals.css";
 
 const ptSerif = PT_Serif({
@@ -11,6 +11,11 @@ const ptSerif = PT_Serif({
 const breeSerif = Bree_Serif({
   variable: "--font-breeSerif",
   weight: "400",
+  subsets: ["latin"],
+});
+
+const oswald = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
 });
 
@@ -26,7 +31,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${breeSerif.variable} ${ptSerif.variable} antialiased`}
+        className={`${breeSerif.variable} ${ptSerif.variable} ${oswald.variable} antialiased`}
       >
         {children}
       </body>

@@ -52,7 +52,7 @@ export const NavBar = ({ lan }: { lan: TLanguages }) => {
 
     return (
         <nav className={`
-            flex items-center h-16 mx-5 lg:w-[1000px] lg:mx-auto
+            flex items-center h-16 mx-5 lg:mx-auto lg:w-[1000px]
             fixed top-0 left-0 right-0 z-1
             transition-all duration-300
             ${isScrolled ? 'bg-white' : 'bg-transparent'}
