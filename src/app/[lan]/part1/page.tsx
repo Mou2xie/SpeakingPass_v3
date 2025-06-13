@@ -24,7 +24,7 @@ export default function PartOnePage() {
 
     return (
         <>
-            <section className=" flex justify-around items-center mt-20 lg:mt-30">
+            <section className=" flex justify-around items-center h-20 lg:h-30 mt-20 lg:mt-30">
                 <h1 className="font-(family-name:--font-breeSerif) flex flex-col">
                     <span className=" text-3xl lg:text-[2.4rem] text-text-strong">PART 1</span>
                     <span className=" lg:text-2xl text-text-light">IELTS Speaking Questions</span>
