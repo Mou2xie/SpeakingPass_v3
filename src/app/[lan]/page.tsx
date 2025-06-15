@@ -1,45 +1,16 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Title } from "@/components/Title";
 import { PartOneSection } from "@/components/PartOneSection";
+import { PartTwoSection } from "@/components/PartTwoSection";
 
-import { getCurrentPart1Category } from "@/libs/actions";
+import { getCurrentPart1Category, getCurrentPart2 } from "@/libs/actions";
 
 export default async function Page({ params }: { params: Promise<{ lan: string }> }) {
 
     const { lan } = await params;
 
     const part1Data = getCurrentPart1Category();
-
-    const topics1 = [
-        "Home",
-        "Work",
-        "Study",
-        "Hometown",
-        "Family",
-        "Friends",
-        "Food",
-        "Travel",
-        "Health",
-        "Shopping",
-        "Technology",
-        "Books",
-        "Music",
-        "Movies",
-        "Sports"
-    ];
-
-    const topics2 = [
-        "Descrip a person you admire",
-        "Describe a memorable event",
-        "Describe a place you visited",
-        "Describe a hobby you enjoy",
-        "Describe a skill you want to learn Describe a skill you want to learn Describe a skill you want to learn",
-        "Describe a goal you achieved",
-        "Describe a challenge you faced",
-        "Describe a book you read recently",
-        "Describe a movie you watched recently",
-    ]
+    const part2Data = getCurrentPart2();
 
     return (
         <>
@@ -50,32 +21,7 @@ export default async function Page({ params }: { params: Promise<{ lan: string }
             </section>
             <Title>Questions for May-August</Title>
             <PartOneSection data={part1Data} />
-            {/* <PartTwoSection topics2={topics2} /> */}
+            <PartTwoSection data={part2Data} />
         </>
     );
-}
-
-
-
-const PartTwoSection = ({ topics2 }: { topics2: string[] }) => {
-    return (
-        <section className=" my-10">
-            <h3 className=" text-center text-[1.2rem] mb-5 text-text-light font-(family-name:--font-oswald)">PART 2&3</h3>
-            <div className=" flex flex-col gap-5 lg:w-5/6 mx-auto">
-                {
-                    topics2.map((topic, index) => (
-                        <div key={index} className="font-(family-name:--font-ptSerif)">
-                            <Link href={`/`}>
-                                <p className=" text-[1.2rem] text-text-main hover:text-blue-primary transition duration-200 line-clamp-2 ">{topic}</p>
-                            </Link>
-                        </div>
-                    ))
-                }
-                <Link href={'/'} className=" text-[1.2rem] flex items-center justify-center gap-0 hover:gap-1 transition-all duration-200 text-blue-primary ">
-                    More
-                    <RiArrowRightSLine></RiArrowRightSLine>
-                </Link>
-            </div>
-        </section>
-    )
 }
