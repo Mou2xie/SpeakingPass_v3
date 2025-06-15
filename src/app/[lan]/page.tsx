@@ -1,11 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Title } from "@/components/Title";
-import { RiArrowRightSLine } from "@remixicon/react";
+import { PartOneSection } from "@/components/PartOneSection";
+
+import { getCurrentPart1Category } from "@/libs/actions";
 
 export default async function Page({ params }: { params: Promise<{ lan: string }> }) {
 
     const { lan } = await params;
+
+    const part1Data = getCurrentPart1Category();
 
     const topics1 = [
         "Home",
@@ -45,34 +49,13 @@ export default async function Page({ params }: { params: Promise<{ lan: string }
                 <Image src='/heroimage.svg' alt="hero-image" width={280} height={30} className=" mt-5 lg:mt-10 lg:w-[500px]"></Image>
             </section>
             <Title>Questions for May-August</Title>
-            <PartOneSection topics1={topics1} />
-            <PartTwoSection topics2={topics2} />
+            <PartOneSection data={part1Data} />
+            {/* <PartTwoSection topics2={topics2} /> */}
         </>
     );
 }
 
-const PartOneSection = ({ topics1 }: { topics1: string[] }) => {
-    return (
-        <section className=" my-10">
-            <h3 className=" text-center text-[1.2rem] mb-5 text-text-light font-(family-name:--font-oswald)">PART 1</h3>
-            <div className=" grid grid-cols-2 lg:grid-cols-4 gap-5">
-                {
-                    topics1.map((topic, index) => (
-                        <div key={index} className="font-(family-name:--font-ptSerif)">
-                            <Link href={`/`}>
-                                <p className="text-center text-[1.2rem] text-text-main hover:text-blue-primary transition duration-200 ">{topic}</p>
-                            </Link>
-                        </div>
-                    ))
-                }
-                <Link href={'/'} className="text-[1.2rem] flex items-center justify-center gap-0 hover:gap-1 transition-all duration-200 text-blue-primary ">
-                    More
-                    <RiArrowRightSLine></RiArrowRightSLine>
-                </Link>
-            </div>
-        </section>
-    )
-}
+
 
 const PartTwoSection = ({ topics2 }: { topics2: string[] }) => {
     return (
