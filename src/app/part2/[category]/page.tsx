@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getPart2TopicsByCategory } from "@/libs/actions";
+import { CURRENT_MONTH } from "@/models/currentMonth";
 
 export default async function PartTwoPage({ params }: { params: Promise<{ category: string }> }) {
 
@@ -40,7 +41,7 @@ export default async function PartTwoPage({ params }: { params: Promise<{ catego
                                 <span className=" inline text-[1.2rem] line-clamp-2 text-text-main hover:text-blue-primary transition duration-200">{topic.topic}</span>
                                 {
                                     topic.type === 'CURRENT' &&
-                                    <span className=" text-red-500 text-[1.0rem] font-(family-name:--font-oswald) ml-3 ">CURRENT</span>
+                                    <span className=" text-red-500 text-[1.0rem] font-(family-name:--font-oswald) ml-3 ">{CURRENT_MONTH}</span>
                                 }
                             </Link>
                         </li>

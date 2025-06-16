@@ -41,17 +41,17 @@ export async function getAllPart1Categories(): Promise<{ category: string; type:
     return data ?? [];
 }
 
-export async function getPart1QuestionsByCategory(category: string): Promise<{ topic: string }[]> {
+export async function getPart1QuestionsByCategory(category: string): Promise<{ topic: string; v3_part1_category: { type: string | null } }[]> {
     let { data, error } = await supabase
         .from('v3_part1_topic')
-        .select('topic')
+        .select('topic, v3_part1_category(type)')
         .eq('category', category);
 
     if (error) {
         throw error
     }
 
-    return data ?? [];
+    return data as unknown as { topic: string; v3_part1_category: { type: string | null } }[];
 }
 
 export async function getPart2TopicsByCategory(category: string): Promise<{ topic: string, id: number, type: string | null }[]> {
@@ -67,10 +67,10 @@ export async function getPart2TopicsByCategory(category: string): Promise<{ topi
     return data ?? [];
 }
 
-export async function getPart2TopicById(id: number): Promise<{ topic: string; subTopics: string[]; part3: string[]; category: string } | null> {
+export async function getPart2TopicById(id: number): Promise<{ topic: string; subTopics: string[]; part3: string[]; category: string, type: string | null } | null> {
     let { data, error } = await supabase
         .from('v3_part2_topic')
-        .select('topic, subTopics, part3, category')
+        .select('topic, subTopics, part3, category, type')
         .eq('id', id)
         .single();
 

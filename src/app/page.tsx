@@ -5,6 +5,7 @@ import { PartTwoSection } from "@/components/PartTwoSection";
 import { getCurrentPart1Category, getCurrentPart2 } from "@/libs/actions";
 import { Suspense } from "react";
 import { FallbackPartOne, FallbackPartTwo } from "@/components/Fallback";
+import { CURRENT_MONTH } from "@/models/currentMonth";
 
 export default async function Page() {
 
@@ -18,7 +19,7 @@ export default async function Page() {
                 <p className=" text-[1.0rem] lg:text-[1.4rem] text-center font-(family-name:--font-ptSerif) text-text-main">Get access to all past and latest IELTS Speaking questions to ace your test!</p>
                 <Image src='/heroimage.svg' alt="hero-image" width={280} height={30} className=" mt-5 lg:mt-10 lg:w-[500px]"></Image>
             </section>
-            <Title>Questions for <span className=" text-red-500">May-August</span></Title>
+            <Title><span className=" text-red-500">Questions for {CURRENT_MONTH}</span></Title>
             <Suspense fallback={<FallbackPartOne length={20} />}>
                 <PartOneSection data={part1Data} />
             </Suspense>
