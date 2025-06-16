@@ -1,3 +1,6 @@
+import { NavBar } from "@/components/NavBar";
+import { Footer } from '@/components/Footer';
+import { Main } from "@/components/Main";
 import type { Metadata } from "next";
 import { PT_Serif, Bree_Serif, Oswald } from "next/font/google";
 import "./globals.css";
@@ -33,8 +36,14 @@ export default async function RootLayout({
       <body
         className={`${breeSerif.variable} ${ptSerif.variable} ${oswald.variable} antialiased`}
       >
-        {children}
+        <NavBar />
+        <Main>
+          {children}
+        </Main>
+        <Footer />
       </body>
     </html>
   );
 }
+
+

@@ -17,13 +17,13 @@ export const PartOneSection = ({ data }: Data) => {
                 {
                     topics.map((topic, index) => (
                         <div key={index} className="font-(family-name:--font-ptSerif)">
-                            <Link href={`/`}>
+                            <Link href={`/part1/${topic.category}`} target='_blank'>
                                 <p className="text-center text-[1.2rem] text-text-main hover:text-blue-primary transition duration-200 ">{topic.category}</p>
                             </Link>
                         </div>
                     ))
                 }
-                <Link href={'/'} className="text-[1.2rem] flex items-center justify-center gap-0 hover:gap-1 transition-all duration-200 text-blue-primary ">
+                <Link href={`/part1`} className="text-[1.2rem] flex items-center justify-center gap-0 hover:gap-1 transition-all duration-200 text-blue-primary ">
                     More
                     <RiArrowRightSLine></RiArrowRightSLine>
                 </Link>

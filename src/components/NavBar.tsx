@@ -1,44 +1,11 @@
 'use client'
 
 import Image from "next/image";
-import { LanguagePicker } from "./LanguagePicker";
 import { MNavMenu } from './MobileNavMenu';
-import type { TLanguages } from "@/models/languages";
 import { useEffect, useState } from 'react';
+import Link from "next/link";
 
-const text: Record<TLanguages, {
-    scoreBooster: string;
-    questionBank: string;
-    about: string;
-}> = {
-    en: {
-        scoreBooster: "🔥 Score Booster",
-        questionBank: "Question Bank",
-        about: "About"
-    },
-    zh:{
-        scoreBooster: "🔥 当季备考指南",
-        questionBank: "题库",
-        about: "关于"
-    },
-    ru:{
-        scoreBooster: "🔥 Ускоритель баллов",
-        questionBank: "Банк вопросов",
-        about: "О нас"
-    },
-    fr:{
-        scoreBooster: "🔥 Booster de score",
-        questionBank: "Banque de questions",
-        about: "À propos"
-    },  
-    hi:{
-        scoreBooster: "🔥 स्कोर बूस्टर",
-        questionBank: "प्रश्न बैंक",
-        about: "के बारे में"
-    }
-};
-
-export const NavBar = ({ lan }: { lan: TLanguages }) => {
+export const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
@@ -57,27 +24,21 @@ export const NavBar = ({ lan }: { lan: TLanguages }) => {
             transition-all duration-300
             ${isScrolled ? 'bg-white' : 'bg-transparent'}
         `}>
-            <a href={`/${lan}`} className=" hidden lg:inline">
+            <a href={`/`} className=" hidden lg:inline">
                 <Image src="/logo.svg" alt="logo" width={200} height={100} />
             </a>
             <div className=" lg:hidden">
-                <MNavMenu lan={lan} />
+                <MNavMenu />
             </div>
             <div className=" flex-1"></div>
-            <ul className=" hidden lg:flex gap-8 font-(family-name:--font-ptSerif) text-[1.1rem] font-bold cursor-pointer">
-                <a href={`/${lan}/booster`}>
-                    <li className="text-[#FF5A5A] hover:text-blue-primary transition-all duration-300">{text[lan].scoreBooster}</li>
-                </a>
-                <a href={`/${lan}/bank`}>
-                    <li className="hover:text-blue-primary transition-all duration-300">{text[lan].questionBank}</li>
-                </a>
-                <a href={`/${lan}/about`}>
-                    <li className="hover:text-blue-primary transition-all duration-300">{text[lan].about}</li>
-                </a>
+            <ul className=" hidden lg:flex gap-8 font-(family-name:--font-ptSerif) text-[1.2rem] font-bold cursor-pointer">
+                <li className="hover:text-blue-primary transition-all duration-300">
+                    <Link href={`/part1`}>Part 1</Link>
+                </li>
+                <li className="hover:text-blue-primary transition-all duration-300">
+                    <Link href={`/part2/Person`}>Part 2&3</Link>
+                </li>
             </ul>
-            <div className=" ml-10">
-                <LanguagePicker lan={lan} />
-            </div>
         </nav>
     );
 }
