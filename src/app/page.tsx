@@ -2,8 +2,9 @@ import Image from "next/image";
 import { Title } from "@/components/Title";
 import { PartOneSection } from "@/components/PartOneSection";
 import { PartTwoSection } from "@/components/PartTwoSection";
-
 import { getCurrentPart1Category, getCurrentPart2 } from "@/libs/actions";
+import { Suspense } from "react";
+import { FallbackPartOne, FallbackPartTwo } from "@/components/Fallback";
 
 export default async function Page() {
 
@@ -18,9 +19,16 @@ export default async function Page() {
                 <Image src='/heroimage.svg' alt="hero-image" width={280} height={30} className=" mt-5 lg:mt-10 lg:w-[500px]"></Image>
             </section>
             <Title>Questions for <span className=" text-red-500">May-August</span></Title>
-            <PartOneSection data={part1Data} />
-            <PartTwoSection data={part2Data} />
+            <Suspense fallback={<FallbackPartOne length={20} />}>
+                <PartOneSection data={part1Data} />
+            </Suspense>
+            <Suspense fallback={<FallbackPartTwo length={10} />}>
+                <PartTwoSection data={part2Data} />
+            </Suspense>
         </>
     );
 }
+
+
+
 
