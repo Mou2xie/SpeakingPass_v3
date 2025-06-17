@@ -4,6 +4,12 @@ import { Title } from "@/components/Title";
 import { getAllPart1Categories } from "@/libs/actions";
 import { CURRENT_MONTH } from "@/models/currentMonth";
 import { encodeURLSegment } from "@/libs/functions";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: `All latest and past IELTS Speaking Part 1 Topics ${CURRENT_MONTH} | SpeakingPass`,
+    description: `Looking for IELTS Speaking Part 1 topics? Explore our definitive list covering everything from past classics to the very latest questions. All new topics for ${CURRENT_MONTH} are clearly marked. Your complete resource to practice and prepare.`,
+};
 
 export default async function PartOnePage() {
 

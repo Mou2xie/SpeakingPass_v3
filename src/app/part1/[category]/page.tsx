@@ -3,6 +3,18 @@ import { getPart1QuestionsByCategory } from "@/libs/actions";
 import Link from "next/link";
 import { CURRENT_MONTH } from "@/models/currentMonth";
 import { decodeURLSegment } from "@/libs/functions";
+import type { Metadata } from "next";
+
+export async function generateMetadata(
+    { params }: { params: Promise<{ category: string }> }
+): Promise<Metadata> {
+    const category = decodeURLSegment((await params).category);
+
+    return {
+        title: `${category} Questions - IELTS Speaking Part 1 Practice | SpeakingPass`,
+        description: `Master the '${category}' topic for IELTS Speaking Part 1. Our complete list features all latest and past questions to ensure you're fully prepared. Practice your answers and walk into the exam with confidence!`,
+    }
+}
 
 export default async function PartOneDetail({ params }: { params: Promise<{ category: string }> }) {
 

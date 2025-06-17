@@ -3,6 +3,17 @@ import { getPart2TopicById } from "@/libs/actions";
 import Link from "next/link";
 import { CURRENT_MONTH } from "@/models/currentMonth";
 import { decodeURLSegment } from "@/libs/functions";
+import type { Metadata } from "next";
+
+export async function generateMetadata(
+    { params }: { params: Promise<{ topic: string }> }
+): Promise<Metadata> {
+    const question = decodeURLSegment((await params).topic);
+    return {
+        title: `${question} - IELTS Speaking Part 2 & 3 Questions | SpeakingPass`,
+        description: `Prepare for the IELTS topic ${question}. This page features the full Part 2 cue card and a list of related Part 3 follow-up questions to help you understand the topic in depth. Start building your ideas now!`
+    }
+}
 
 export default async function PartTwoDetail({ params }: { params: Promise<{ topic: string }> }) {
 

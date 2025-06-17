@@ -3,6 +3,18 @@ import Link from "next/link";
 import { getPart2TopicsByCategory } from "@/libs/actions";
 import { CURRENT_MONTH } from "@/models/currentMonth";
 import { encodeURLSegment } from "@/libs/functions";
+import type { Metadata } from "next";
+
+export async function generateMetadata(
+    { params }: { params: Promise<{ category: string }> }
+): Promise<Metadata> {
+    const { category } = await params;
+    return {
+        title: `${category}: IELTS Speaking Part 2 Topic Collection | SpeakingPass`,
+        description: `Master all IELTS Part 2 topics on how to '${category}'. This comprehensive collection features new and classic cue cards within this category. Learn the common structure and vocabulary to confidently answer any related question.`,
+    }
+}
+
 
 export default async function PartTwoPage({ params }: { params: Promise<{ category: string }> }) {
 

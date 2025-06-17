@@ -6,6 +6,12 @@ import { getCurrentPart1Category, getCurrentPart2 } from "@/libs/actions";
 import { Suspense } from "react";
 import { FallbackPartOne, FallbackPartTwo } from "@/components/Fallback";
 import { CURRENT_MONTH } from "@/models/currentMonth";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "latest IELTS Speaking Topics & Questions | SpeakingPass",
+    description: "Boost your IELTS Speaking score! Access a huge bank of recent and past questions for Part 1, 2, & 3. Updated for 2025. Your #1 free resource for exam practice. Start preparing on SpeakingPass now!"
+};
 
 export default async function Page() {
 
