@@ -30,7 +30,7 @@ export default async function PartTwoPage({ params }: { params: Promise<{ catego
                     <span className=" text-3xl lg:text-[2.4rem] text-text-strong">IELTS Speaking Part 2 Topics</span>
                     <span className=" lg:text-2xl text-text-light mt-1">Latest & Past Questions</span>
                 </h1>
-                <Image src='/egg2.svg' alt="hero-image" width={100} height={100} className=" w-20 lg:w-30" ></Image>
+                <Image src='/egg2.svg' alt="Two cute eggs icon representing new ideas" width={100} height={100} className=" w-20 lg:w-30" ></Image>
             </section>
             <hr className=" text-[#DCE4EC] my-5 lg:my-8" />
             <ul className=" flex gap-5 lg:gap-20 justify-center my-5 lg:my-10">
