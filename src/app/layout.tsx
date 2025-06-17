@@ -3,6 +3,7 @@ import { Footer } from '@/components/Footer';
 import { Main } from "@/components/Main";
 import type { Metadata } from "next";
 import { PT_Serif, Bree_Serif, Oswald } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const ptSerif = PT_Serif({
@@ -32,6 +33,23 @@ export default async function RootLayout({
 }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      {/* Google Analytics */}
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-SDFVJVC4EX"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-SDFVJVC4EX');
+          `,
+        }}
+      />
       <body
         className={`${breeSerif.variable} ${ptSerif.variable} ${oswald.variable} antialiased`}
       >
