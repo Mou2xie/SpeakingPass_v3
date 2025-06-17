@@ -27,8 +27,8 @@ export default async function PartTwoPage({ params }: { params: Promise<{ catego
         <>
             <section className=" flex justify-around items-center h-20 lg:h-30 mt-20 lg:mt-30">
                 <h1 className="font-(family-name:--font-breeSerif) flex flex-col">
-                    <span className=" text-3xl lg:text-[2.4rem] text-text-strong">PART 2&3</span>
-                    <span className=" lg:text-2xl text-text-light">IELTS Speaking Questions</span>
+                    <span className=" text-3xl lg:text-[2.4rem] text-text-strong">IELTS Speaking Part 2 Topics</span>
+                    <span className=" lg:text-2xl text-text-light mt-1">Latest & Past Questions</span>
                 </h1>
                 <Image src='/egg2.svg' alt="hero-image" width={100} height={100} className=" w-20 lg:w-30" ></Image>
             </section>

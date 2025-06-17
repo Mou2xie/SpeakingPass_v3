@@ -14,21 +14,24 @@ export const PartOneSection = ({ data }: Data) => {
     return (
         <section className=" my-10">
             <h3 className=" text-center text-[1.2rem] mb-5 text-text-light font-(family-name:--font-oswald)">PART 1</h3>
-            <div className=" grid grid-cols-2 lg:grid-cols-4 gap-10">
+            <ul className=" grid grid-cols-2 lg:grid-cols-4 gap-10">
                 {
                     topics.map((topic, index) => (
-                        <div key={index} className="font-(family-name:--font-ptSerif)">
-                            <Link href={`/part1/${encodeURLSegment(topic.category)}`} target='_blank'>
-                                <p className="text-center text-[1.2rem] text-text-main hover:text-blue-primary transition duration-200 ">{topic.category}</p>
+                        <li key={index} className="font-(family-name:--font-ptSerif)">
+                            <Link href={`/part1/${encodeURLSegment(topic.category)}`} target='_blank' className="text-center text-[1.2rem] text-text-main hover:text-blue-primary transition duration-200 ">
+                                {topic.category}
                             </Link>
-                        </div>
+                        </li>
                     ))
                 }
-                <Link href={`/part1`} className="text-[1.2rem] flex items-center justify-center gap-0 hover:gap-1 transition-all duration-200 text-blue-primary ">
-                    More
-                    <RiArrowRightSLine></RiArrowRightSLine>
-                </Link>
-            </div>
+                <li>
+                    <Link href={`/part1`} className="text-[1.2rem] flex items-center gap-0 hover:gap-1 transition-all duration-200 text-blue-primary ">
+                        More
+                        <RiArrowRightSLine></RiArrowRightSLine>
+                    </Link>
+                </li>
+
+            </ul>
         </section>
     )
 }

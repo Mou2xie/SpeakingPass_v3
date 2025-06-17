@@ -22,10 +22,10 @@ export default async function PartOnePage() {
         <>
             <section className=" flex justify-around items-center h-20 lg:h-30 mt-20 lg:mt-30">
                 <h1 className="font-(family-name:--font-breeSerif) flex flex-col">
-                    <span className=" text-3xl lg:text-[2.4rem] text-text-strong">PART 1</span>
-                    <span className=" lg:text-2xl text-text-light">IELTS Speaking Questions</span>
+                    <span className=" text-3xl lg:text-[2.4rem] text-text-strong">IELTS Speaking Part 1 Topics</span>
+                    <span className=" lg:text-2xl text-text-light inline-block mt-1">Latest & Past Questions</span>
                 </h1>
-                <Image src='/egg1.svg' alt="hero-image" width={100} height={100} className=" w-15 lg:w-24" ></Image>
+                <Image src='/egg1.svg' alt="A cute egg icon representing a new idea" width={100} height={100} className=" w-15 lg:w-24" ></Image>
             </section>
             <hr className=" text-[#DCE4EC] my-5 lg:my-8" />
             <Title><span className=" text-red-500">Questions for {CURRENT_MONTH}</span></Title>
@@ -40,16 +40,16 @@ export default async function PartOnePage() {
 
 const QuestionList = ({ topics }: { topics: string[] }) => {
     return (
-        <section className=" grid grid-cols-2 lg:grid-cols-4 gap-10 my-10">
+        <ul className=" grid grid-cols-2 lg:grid-cols-4 gap-10 my-10">
             {
                 topics.map((topic, index) => (
-                    <div key={index} className="font-(family-name:--font-ptSerif)">
-                        <Link href={`/part1/${encodeURLSegment(topic)}`} target="_black">
-                            <p className="text-center text-[1.2rem] text-text-main hover:text-blue-primary transition duration-200 ">{topic}</p>
+                    <li key={index} className="font-(family-name:--font-ptSerif)">
+                        <Link href={`/part1/${encodeURLSegment(topic)}`} target="_black" className="text-center text-[1.2rem] text-text-main hover:text-blue-primary transition duration-200 ">
+                            {topic}
                         </Link>
-                    </div>
+                    </li>
                 ))
             }
-        </section>
+        </ul>
     );
 }

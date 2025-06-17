@@ -34,8 +34,9 @@ export default async function PartOneDetail({ params }: { params: Promise<{ cate
                         PART 1
                     </span>
                 </Link>
-                <h1 className="font-(family-name:--font-breeSerif) text-3xl lg:text-[2.5rem] text-text-strong text-center">
-                    {_category}
+                <h1 className="font-(family-name:--font-breeSerif) text-center my-2">
+                    <span className=" block text-text-main lg:text-[1.2rem]">IELTS Speaking Part 1 Topic</span>
+                    <span className="text-3xl lg:text-[2.5rem] text-text-strong">{_category}</span>
                 </h1>
                 {
                     isCurrent && (
@@ -45,7 +46,7 @@ export default async function PartOneDetail({ params }: { params: Promise<{ cate
                     )
                 }
             </section>
-            <hr className=" text-[#DCE4EC] my-5 lg:my-8" />
+            <hr className=" text-[#DCE4EC] my-5" />
             <ul className=" flex flex-col gap-10 my-10 lg:w-2/3 lg:mx-auto">
                 {
                     questions.map((question, index) => (

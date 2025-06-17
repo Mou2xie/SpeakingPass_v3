@@ -23,7 +23,7 @@ export default async function Page() {
             <section className="flex flex-col items-center justify-center gap-4 mt-20 lg:mt-40">
                 <h1 className=" text-3xl lg:text-5xl text-center font-(family-name:--font-breeSerif) text-text-strong">IELTS Speaking Question Bank</h1>
                 <p className=" text-[1.0rem] lg:text-[1.4rem] text-center font-(family-name:--font-ptSerif) text-text-main">Get access to all past and latest IELTS Speaking questions to ace your test!</p>
-                <Image src='/heroimage.svg' alt="hero-image" width={280} height={30} className=" mt-5 lg:mt-10 lg:w-[500px]"></Image>
+                <Image src='/heroimage.svg' alt="two people are having the speaking test" width={280} height={30} className=" mt-5 lg:mt-10 lg:w-[500px]"></Image>
             </section>
             <Title><span className=" text-red-500">Questions for {CURRENT_MONTH}</span></Title>
             <Suspense fallback={<FallbackPartOne length={20} />}>
