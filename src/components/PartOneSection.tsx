@@ -3,6 +3,7 @@
 import { use } from 'react';
 import Link from "next/link";
 import { RiArrowRightSLine } from "@remixicon/react";
+import { encodeURLSegment } from "@/libs/functions";
 
 type Data = { data: Promise<{ category: string }[]> }
 
@@ -17,7 +18,7 @@ export const PartOneSection = ({ data }: Data) => {
                 {
                     topics.map((topic, index) => (
                         <div key={index} className="font-(family-name:--font-ptSerif)">
-                            <Link href={`/part1/${topic.category}`} target='_blank'>
+                            <Link href={`/part1/${encodeURLSegment(topic.category)}`} target='_blank'>
                                 <p className="text-center text-[1.2rem] text-text-main hover:text-blue-primary transition duration-200 ">{topic.category}</p>
                             </Link>
                         </div>

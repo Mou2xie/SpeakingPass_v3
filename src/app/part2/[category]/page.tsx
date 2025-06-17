@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPart2TopicsByCategory } from "@/libs/actions";
 import { CURRENT_MONTH } from "@/models/currentMonth";
+import { encodeURLSegment } from "@/libs/functions";
 
 export default async function PartTwoPage({ params }: { params: Promise<{ category: string }> }) {
 
@@ -37,7 +38,7 @@ export default async function PartTwoPage({ params }: { params: Promise<{ catego
                 {
                     _topic.map((topic, index) => (
                         <li key={index} className=" font-(family-name:--font-ptSerif) ">
-                            <Link href={`/part2/detail/${topic.id}`} target="_blank">
+                            <Link href={`/part2/detail/${encodeURLSegment(topic.topic)}`} target="_blank">
                                 <span className=" inline text-[1.2rem] line-clamp-2 text-text-main hover:text-blue-primary transition duration-200">{topic.topic}</span>
                                 {
                                     topic.type === 'CURRENT' &&
@@ -53,7 +54,7 @@ export default async function PartTwoPage({ params }: { params: Promise<{ catego
 }
 
 // sort topics with type 'CURRENT' first
-const sortByCurrent = (arr: { topic: string, id: number, type: string | null }[]) => {
+const sortByCurrent = (arr: { topic: string, type: string | null }[]) => {
     return arr.sort((a, b) => {
         if (a.type === 'CURRENT' && b.type === null) {
             return -1;

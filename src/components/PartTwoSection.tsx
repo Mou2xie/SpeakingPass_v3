@@ -3,8 +3,9 @@
 import { use } from 'react';
 import Link from "next/link";
 import { RiArrowRightSLine } from "@remixicon/react";
+import { encodeURLSegment } from "@/libs/functions";
 
-type Data = { data: Promise<{ topic: string, id: number }[]> }
+type Data = { data: Promise<{ topic: string }[]> }
 
 export const PartTwoSection = ({ data }: Data) => {
 
@@ -17,7 +18,7 @@ export const PartTwoSection = ({ data }: Data) => {
                 {
                     topics.map((topic, index) => (
                         <div key={index} className="font-(family-name:--font-ptSerif)">
-                            <Link href={`/part2/detail/${topic.id}`} target='_black'>
+                            <Link href={`/part2/detail/${encodeURLSegment(topic.topic)}`} target='_black'>
                                 <p className=" text-[1.2rem] text-text-main hover:text-blue-primary transition duration-200 line-clamp-2 ">{topic.topic}</p>
                             </Link>
                         </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Title } from "@/components/Title";
 import { getAllPart1Categories } from "@/libs/actions";
 import { CURRENT_MONTH } from "@/models/currentMonth";
+import { encodeURLSegment } from "@/libs/functions";
 
 export default async function PartOnePage() {
 
@@ -37,7 +38,7 @@ const QuestionList = ({ topics }: { topics: string[] }) => {
             {
                 topics.map((topic, index) => (
                     <div key={index} className="font-(family-name:--font-ptSerif)">
-                        <Link href={`/part1/${topic}`} target="_black">
+                        <Link href={`/part1/${encodeURLSegment(topic)}`} target="_black">
                             <p className="text-center text-[1.2rem] text-text-main hover:text-blue-primary transition duration-200 ">{topic}</p>
                         </Link>
                     </div>

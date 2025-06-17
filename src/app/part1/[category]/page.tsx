@@ -2,11 +2,12 @@ import { RiArrowLeftLine } from "@remixicon/react";
 import { getPart1QuestionsByCategory } from "@/libs/actions";
 import Link from "next/link";
 import { CURRENT_MONTH } from "@/models/currentMonth";
+import { decodeURLSegment } from "@/libs/functions";
 
 export default async function PartOneDetail({ params }: { params: Promise<{ category: string }> }) {
 
     const { category } = await params;
-    const _category = addSpace(category);
+    const _category = decodeURLSegment(category);
     const questions = await getPart1QuestionsByCategory(_category);
     const isCurrent = questions[0]?.v3_part1_category?.type === 'CURRENT';
 
@@ -45,9 +46,4 @@ export default async function PartOneDetail({ params }: { params: Promise<{ cate
         </>
     );
 
-}
-
-// replace %20 with space in camelCase strings
-const addSpace = (str: string) => {
-    return str.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/%20/g, ' ');
 }
