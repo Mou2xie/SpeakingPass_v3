@@ -26,7 +26,7 @@ module.exports = {
   // Set higher timeout for async operations
   generateIndexSitemap: false,
   // Exclude dynamically generated pages from the default sitemap
-  exclude: ['/part1/*', '/part2/*', '/part2/detail/*'],
+  exclude: ['/part1/*', '/part2/question/*'],
   // Add additional sitemaps for dynamic routes
   additionalPaths: async (config) => {
     const dynamicPaths = [];
@@ -48,26 +48,6 @@ module.exports = {
           });
         });
       }
-
-      // Get Part2 categories
-      const { data: part2Categories, error: part2CatError } = await supabase
-        .from('v3_part2_topic')
-        .select('category')
-        .distinct();
-      
-      if (!part2CatError && part2Categories) {
-        // Add paths for part2 categories
-        part2Categories.forEach(({ category }) => {
-          if (category) {
-            dynamicPaths.push({
-              loc: `/part2/${encodeURLSegment(category)}`,
-              lastmod: new Date().toISOString(),
-              changefreq: 'weekly',
-              priority: 0.7,
-            });
-          }
-        });
-      }
       
       // Get Part2 topics for detail pages
       const { data: part2Topics, error: part2Error } = await supabase
@@ -78,7 +58,7 @@ module.exports = {
         // Add paths for part2 detail pages
         part2Topics.forEach(({ topic }) => {
           dynamicPaths.push({
-            loc: `/part2/detail/${encodeURLSegment(topic)}`,
+            loc: `/part2/question/${encodeURLSegment(topic)}`,
             lastmod: new Date().toISOString(),
             changefreq: 'weekly',
             priority: 0.8,
