@@ -38,7 +38,7 @@ export default async function PartTwoPage({ params }: { params: Promise<{ catego
                 {
                     _topic.map((topic, index) => (
                         <li key={index} className=" font-(family-name:--font-ptSerif) ">
-                            <Link href={`/part2/detail/${encodeURLSegment(topic.topic)}`} target="_blank">
+                            <Link href={`/part2/question/${encodeURLSegment(topic.topic)}`} target="_blank">
                                 <span className=" inline text-[1.2rem] line-clamp-2 text-text-main hover:text-blue-primary transition duration-200">{topic.topic}</span>
                                 {
                                     topic.type === 'CURRENT' &&
