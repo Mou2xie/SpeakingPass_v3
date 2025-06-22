@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CURRENT_MONTH } from "@/models/currentMonth";
 import { decodeURLSegment } from "@/libs/functions";
 import type { Metadata } from "next";
+import { Ad } from "@/components/Ad";
 
 export async function generateMetadata(
     { params }: { params: Promise<{ category: string }> }
@@ -56,6 +57,21 @@ export default async function PartOneDetail({ params }: { params: Promise<{ cate
                     ))
                 }
             </ul>
+            <hr className=" text-[#DCE4EC] my-5" />
+            <ul className=" text-center my-10">
+                <li className=" mb-5">
+                    <Link href={`/part1`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
+                        Latest Part 1 Topics for <span className=" text-red-500">{CURRENT_MONTH}</span>
+                    </Link>
+                </li>
+                <li className=" mb-5">
+                    <Link href={`/part1`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
+                        All IELTS Part 1 Topics
+                    </Link>
+                </li>
+            </ul>
+
+            <Ad />
         </>
     );
 

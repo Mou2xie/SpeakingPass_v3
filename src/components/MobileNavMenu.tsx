@@ -16,6 +16,7 @@ export const MNavMenu = () => {
                         <li className=" py-2"><Link href={`/`}>Home</Link></li>
                         <li className=" py-2"><Link href={`/part1`}>Part 1</Link></li>
                         <li className=" py-2"><Link href={`/part2/Person`}>Part 2&3</Link></li>
+                        <li className=" py-2"><Link href={'https://www.lingopick.net/'} target="_blank">Vocabulary Booster 🚀</Link></li>
                     </ul>
                 )
             }

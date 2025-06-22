@@ -6,6 +6,7 @@ import { getCurrentPart1Category, getCurrentPart2 } from "@/libs/actions";
 import { Suspense } from "react";
 import { FallbackPartOne, FallbackPartTwo } from "@/components/Fallback";
 import { CURRENT_MONTH } from "@/models/currentMonth";
+import { Ad } from "@/components/Ad";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default async function Page() {
             <Suspense fallback={<FallbackPartOne length={20} />}>
                 <PartOneSection data={part1Data} />
             </Suspense>
+            <Ad />
             <Suspense fallback={<FallbackPartTwo length={10} />}>
                 <PartTwoSection data={part2Data} />
             </Suspense>
