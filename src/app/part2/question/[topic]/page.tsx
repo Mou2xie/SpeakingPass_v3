@@ -67,19 +67,31 @@ export default async function PartTwoDetail({ params }: { params: Promise<{ topi
                 }
             </section>
             <hr className=" text-[#DCE4EC] my-5" />
-            <ul className=" text-center my-10">
-                {
-                    !isCurrent && (
-                        <li className=" mb-5">
-                            <Link href={`/part2/Person`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
-                                Latest Part 2 Topics for <span className=" text-red-500">{CURRENT_MONTH}</span>
-                            </Link>
-                        </li>
-                    )
-                }
+            <ul className=" my-10 flex flex-col items-center lg:flex-row lg:justify-center lg:gap-8">
+
                 <li className=" mb-5">
                     <Link href={`/part2/Person`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
-                        All Part 2&3 Topics
+                        Latest Part 2&3 Topics for <span className=" text-red-500">{CURRENT_MONTH}</span>
+                    </Link>
+                </li>
+                <li className=" mb-5">
+                    <Link href={`/part2/Person`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
+                        Part 2: Person
+                    </Link>
+                </li>
+                <li className=" mb-5">
+                    <Link href={`/part2/Object`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
+                        Part 2: Object
+                    </Link>
+                </li>
+                <li className=" mb-5">
+                    <Link href={`/part2/Activity`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
+                        Part 2: Activity
+                    </Link>
+                </li>
+                <li className=" mb-5">
+                    <Link href={`/part2/Place`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
+                        Part 2: Place
                     </Link>
                 </li>
             </ul>
