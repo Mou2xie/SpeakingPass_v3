@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getPart2TopicsByCategory } from "@/libs/actions";
-import { CURRENT_MONTH } from "@/models/currentMonth";
 import { encodeURLSegment } from "@/libs/functions";
 import type { Metadata } from "next";
+import { Ad } from "@/components/Ad";
+import { NewTag } from "@/components/NewTag";
 
 export async function generateMetadata(
     { params }: { params: Promise<{ category: string }> }
@@ -54,13 +55,14 @@ export default async function PartTwoPage({ params }: { params: Promise<{ catego
                                 <span className=" inline text-[1.2rem] line-clamp-2 font-(family-name:--font-ptSerif) text-text-main hover:text-blue-primary transition duration-200">{topic.topic}</span>
                                 {
                                     topic.type === 'CURRENT' &&
-                                    <span className=" border border-red-500 text-red-500 px-1 py-[2px] rounded-[5px] text-[0.9rem] font-sans ml-3">{CURRENT_MONTH}</span>
+                                    <NewTag />
                                 }
                             </Link>
                         </li>
                     ))
                 }
             </ul>
+            <Ad />
         </>
     )
 }

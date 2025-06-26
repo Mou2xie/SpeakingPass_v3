@@ -5,7 +5,8 @@ import { CURRENT_MONTH } from "@/models/currentMonth";
 import { decodeURLSegment } from "@/libs/functions";
 import type { Metadata } from "next";
 import { Ad } from "@/components/Ad";
-import { LATEST_PART1_TOPICS_NUM, ALL_PART1_TOPICS_NUM } from "@/models/topicsNumber";
+import { NewTag } from "@/components/NewTag";
+import { SubTitle } from "@/components/SubTitle";
 
 export async function generateMetadata(
     { params }: { params: Promise<{ category: string }> }
@@ -23,52 +24,36 @@ export default async function PartOneDetail({ params }: { params: Promise<{ cate
     const { category } = await params;
     const _category = decodeURLSegment(category);
     const questions = await getPart1QuestionsByCategory(_category);
-    const isCurrent = questions[0]?.v3_part1_category?.type === 'CURRENT';
 
     return (
         <>
-            <section className=" mt-20 lg:mt-30">
-                <Link className=" flex items-center justify-center text-text-light gap-0 hover:gap-1 transition-all duration-200"
-                    href={'/part1'}
-                >
-                    <RiArrowLeftLine />
-                    <span className=" font-(family-name:--font-oswald) lg:text-[1.2rem]">
-                        PART 1
-                    </span>
-                </Link>
+            <section className=" mt-10 lg:mt-20 border-b border-[#DCE4EC] pb-5">
                 <h1 className="font-(family-name:--font-breeSerif) text-center my-2">
-                    <span className=" block text-text-main lg:text-[1.2rem]">IELTS Speaking Part 1 Topic</span>
-                    <span className="text-3xl lg:text-[2.5rem] text-text-strong">{_category}</span>
+                    <span className=" block text-text-light lg:text-[1.2rem]">IELTS Speaking Part 1 Topic</span>
+                    <span className="text-4xl lg:text-[2.2rem] text-text-strong">{_category}</span>
                 </h1>
-                {
-                    isCurrent && (
-                        <p className=" text-center text-red-500 font-(family-name:--font-oswald) lg:text-[1.0rem]">
-                            Questions for {CURRENT_MONTH}
-                        </p>
-                    )
-                }
             </section>
-            <hr className=" text-[#DCE4EC] my-5" />
-            <ul className=" flex flex-col gap-10 my-10 lg:w-2/3 lg:mx-auto">
+            <ul className=" flex flex-col">
                 {
-                    questions.map((question, index) => (
-                        <li key={index} className=" font-(family-name:--font-ptSerif) text-[1.2rem] line-clamp-2 text-text-main ">
-                            {question.topic}
-                            {question.answer}
-                        </li>
+                    questions.map((item, index) => (
+                        <QuestionSection question={item} index={index} key={index}></QuestionSection>
                     ))
                 }
             </ul>
-            <hr className=" text-[#DCE4EC] my-5" />
-            <ul className=" text-center my-10">
-                <li className=" mb-5">
-                    <Link href={`/part1`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
-                        {LATEST_PART1_TOPICS_NUM} Latest Part 1 Topics for <span className=" text-red-500">{CURRENT_MONTH}</span>
+            <ul className=" my-5 flex flex-col gap-3 font-sans text-blue-primary underline text-[1.1rem] font-semibold">
+                <li>
+                    <Link href={`/part1`} >
+                        Latest Part 1 Topics for {CURRENT_MONTH} 🔥  
                     </Link>
                 </li>
-                <li className=" mb-5">
-                    <Link href={`/part1`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
-                        {ALL_PART1_TOPICS_NUM} IELTS Part 1 Topics
+                <li>
+                    <Link href={`/part1`} >
+                        Other IELTS Part 1 Topics
+                    </Link>
+                </li>
+                <li>
+                    <Link href={`/part2/Person`} >
+                        IELTS Part 2&3 Questions
                     </Link>
                 </li>
             </ul>
@@ -76,5 +61,40 @@ export default async function PartOneDetail({ params }: { params: Promise<{ cate
             <Ad />
         </>
     );
-
 }
+
+const QuestionSection = ({ question, index }: {
+    question: {
+        topic: string;
+        answer: string | null;
+        v3_part1_category: {
+            type: string | null;
+        };
+    };
+    index: number;
+}) => {
+    return (
+        <li className=" border-b border-[#DCE4EC] py-10">
+            <span className="font-(family-name:--font-breeSerif) text-[1.4rem] text-text-strong mr-2">{index + 1}.</span>
+            <h2 className=" inline font-(family-name:--font-breeSerif) text-[1.4rem] text-text-strong">{question.topic}</h2>
+            {
+                question.v3_part1_category?.type &&
+                <NewTag></NewTag>
+            }
+
+            {
+                question.answer &&
+                (
+                    <>
+                        <SubTitle>Sample Answer</SubTitle>
+                        <p className=" font-(family-name:--font-ptSerif) text-text-light text-[1.1rem]">
+                            {question.answer}
+                        </p>
+                    </>
+                )
+
+            }
+        </li>
+    )
+}
+

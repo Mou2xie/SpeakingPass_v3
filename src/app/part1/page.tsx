@@ -29,11 +29,11 @@ export default async function PartOnePage() {
                 <Image src='/egg1.svg' alt="A cute egg icon representing a new idea" width={100} height={100} className=" w-15 lg:w-24" ></Image>
             </section>
             <hr className=" text-[#DCE4EC] my-5 lg:my-8" />
-            <Title>Latest Questions For {CURRENT_MONTH}</Title>
+            <Title>Latest Topics For {CURRENT_MONTH}</Title>
             <QuestionList topics={currentCategories} />
-            <Title>Must-test Questions</Title>
+            <Title>Must-test Topics</Title>
             <QuestionList topics={mustTestCategories} />
-            <Title>Past Questions</Title>
+            <Title>Past Topics</Title>
             <QuestionList topics={pastCategories} />
             <Ad />
         </>
