@@ -1,4 +1,4 @@
-import { RiArrowLeftLine } from "@remixicon/react";
+
 import { getPart2TopicByTopic } from "@/libs/actions";
 import Link from "next/link";
 import { CURRENT_MONTH } from "@/models/currentMonth";
