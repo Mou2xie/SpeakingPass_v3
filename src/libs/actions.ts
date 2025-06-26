@@ -67,10 +67,10 @@ export async function getPart2TopicsByCategory(category: string): Promise<{ topi
     return data ?? [];
 }
 
-export async function getPart2TopicById(topic: string): Promise<{ topic: string; subTopics: string[]; part3: string[]; category: string, type: string | null } | null> {
+export async function getPart2TopicByTopic(topic: string): Promise<{ topic: string; subTopics: string[]; part3: string[]; category: string, answer: string | null; type: string | null } | null> {
     let { data, error } = await supabase
         .from('v3_part2_topic')
-        .select('topic, subTopics, part3, category, type')
+        .select('topic, subTopics, part3, category, answer, type')
         .eq('topic', topic)
         .single();
 

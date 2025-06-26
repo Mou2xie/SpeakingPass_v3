@@ -1,4 +1,3 @@
-import { RiArrowLeftLine } from "@remixicon/react";
 import { getPart1QuestionsByCategory } from "@/libs/actions";
 import Link from "next/link";
 import { CURRENT_MONTH } from "@/models/currentMonth";
@@ -87,7 +86,7 @@ const QuestionSection = ({ question, index }: {
                 (
                     <>
                         <SubTitle>Sample Answer</SubTitle>
-                        <p className=" font-(family-name:--font-ptSerif) text-text-light text-[1.1rem]">
+                        <p className=" font-(family-name:--font-ptSerif) text-text-main text-[1.1rem]">
                             {question.answer}
                         </p>
                     </>

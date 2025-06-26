@@ -1,9 +1,11 @@
 import { RiArrowLeftLine } from "@remixicon/react";
-import { getPart2TopicById } from "@/libs/actions";
+import { getPart2TopicByTopic } from "@/libs/actions";
 import Link from "next/link";
 import { CURRENT_MONTH } from "@/models/currentMonth";
 import { decodeURLSegment } from "@/libs/functions";
 import type { Metadata } from "next";
+import { NewTag } from "@/components/NewTag";
+import { SubTitle } from "@/components/SubTitle";
 import { Ad } from "@/components/Ad";
 
 export async function generateMetadata(
@@ -19,79 +21,65 @@ export async function generateMetadata(
 export default async function PartTwoDetail({ params }: { params: Promise<{ topic: string }> }) {
 
     const { topic } = await params;
-    const question = await getPart2TopicById(decodeURLSegment(topic));
+    const question = await getPart2TopicByTopic(decodeURLSegment(topic));
     const isCurrent = question?.type === 'CURRENT';
 
     return (
         <>
-            <section className=" mt-20 lg:mt-30">
-                <Link className=" flex items-center justify-center text-text-light gap-0 hover:gap-1 transition-all duration-200"
-                    href={`/part2/${question?.category}`}>
-                    <RiArrowLeftLine />
-                    <span className=" font-(family-name:--font-oswald) lg:text-[1.2rem]">
-                        PART 2 - {question?.category}
-                    </span>
-                </Link>
-                {
-                    isCurrent && (
-                        <p className=" text-center text-red-500 font-(family-name:--font-oswald) lg:text-[1.0rem]">
-                            Question for {CURRENT_MONTH}
-                        </p>
-                    )
-                }
+            <section className=" mt-10 lg:mt-20 border-b border-[#DCE4EC] pb-5">
+                <h3 className="font-(family-name:--font-breeSerif) text-center my-2 text-text-light lg:text-[1.2rem]">
+                    IELTS Speaking Part 2 Question
+                </h3>
             </section>
-            <hr className=" text-[#DCE4EC] my-5 lg:my-8" />
-            <section className=" flex flex-col my-10 lg:w-2/3 lg:mx-auto">
-                <h1 className=" font-(family-name:--font-breeSerif) text-[1.2rem] lg:text-[1.6rem] text-text-strong">{question?.topic}</h1>
-                <p className=" font-(family-name:--font-ptSerif) text-text-light mt-3 lg:text-[1.1rem]">You should say:</p>
-                <ul className=" list-disc list-inside font-(family-name:--font-ptSerif) text-text-light lg:text-[1.1rem]">
+            <section className=" py-10 border-b border-[#DCE4EC]">
+                <h1 className=" inline font-(family-name:--font-breeSerif) text-[1.4rem] text-text-strong">{question?.topic}</h1>
+                {
+                    isCurrent &&
+                    <NewTag></NewTag>
+                }
+                <p className=" text-[1.1rem] text-text-light font-(family-name:--font-ptSerif) mt-5">You should say:</p>
+                <ul className=" list-disc list-inside">
                     {
-                        question?.subTopics.map((subTopic, index) => (
-                            <li key={index} className=" my-1">{subTopic}</li>
+                        question?.subTopics.map((item, index) => (
+                            <li key={index} className="text-[1.1rem] text-text-light font-(family-name:--font-ptSerif)">{item}</li>
                         ))
                     }
                 </ul>
                 {
-                    question?.part3 && (
+                    question?.answer &&
+                    (
                         <>
-                            <h2 className=" font-(family-name:--font-breeSerif) text-[1.0rem] lg:text-[1.3rem] text-text-main mt-10 mb-3">Part 3 Example Questions</h2>
-                            <ol className=" list-decimal list-inside font-(family-name:--font-ptSerif) text-text-light lg:text-[1.1rem]">
-                                {
-                                    question?.part3.map((part, index) => (
-                                        <li key={index} className=" mb-5">{part}</li>
-                                    ))
-                                }
-                            </ol>
+                            <SubTitle>Sample Answer</SubTitle>
+                            <p className=" font-(family-name:--font-ptSerif) text-text-main text-[1.1rem]">{question.answer}</p>
                         </>
                     )
                 }
+                <h3 className=" font-(family-name:--font-breeSerif) text-[1.4rem] text-text-strong mt-10">Part 3 Example Question</h3>
+                <ol className=" list-decimal list-inside mt-5">
+                    {
+                        question?.part3.map((item, index) => (
+                            <li key={index} className="text-[1.1rem] text-text-light font-(family-name:--font-ptSerif) my-2">
+                                <h2 className=" inline">{item}</h2>
+                            </li>
+                        ))
+                    }
+                </ol>
             </section>
-            <hr className=" text-[#DCE4EC] my-5" />
-            <ul className=" my-10 flex flex-col items-center lg:flex-row lg:justify-center lg:gap-8">
 
-                <li className=" mb-5">
-                    <Link href={`/part2/Person`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
-                        Latest Part 2&3 Topics for <span className=" text-red-500">{CURRENT_MONTH}</span>
+            <ul className=" my-5 flex flex-col gap-3 font-sans text-blue-primary underline text-[1.1rem] font-semibold">
+                <li>
+                    <Link href={`/part2/Person`} >
+                        Latest Part 2 Questions for {CURRENT_MONTH} 🔥
                     </Link>
                 </li>
-                <li className=" mb-5">
-                    <Link href={`/part2/Person`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
-                        Part 2: Person
+                <li>
+                    <Link href={`/part2/${question?.category}`} >
+                        Other IELTS Part 2 Questions of Category: {question?.category}
                     </Link>
                 </li>
-                <li className=" mb-5">
-                    <Link href={`/part2/Object`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
-                        Part 2: Object
-                    </Link>
-                </li>
-                <li className=" mb-5">
-                    <Link href={`/part2/Activity`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
-                        Part 2: Activity
-                    </Link>
-                </li>
-                <li className=" mb-5">
-                    <Link href={`/part2/Place`} className=" text-[1.2rem] underline font-medium text-blue-primary font-(family-name:--font-oswald)">
-                        Part 2: Place
+                <li>
+                    <Link href={`/part1`} >
+                        IELTS Speaking Part 1 Topics
                     </Link>
                 </li>
             </ul>
