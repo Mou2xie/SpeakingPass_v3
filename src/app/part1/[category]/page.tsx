@@ -54,6 +54,7 @@ export default async function PartOneDetail({ params }: { params: Promise<{ cate
                     questions.map((question, index) => (
                         <li key={index} className=" font-(family-name:--font-ptSerif) text-[1.2rem] line-clamp-2 text-text-main ">
                             {question.topic}
+                            {question.answer}
                         </li>
                     ))
                 }

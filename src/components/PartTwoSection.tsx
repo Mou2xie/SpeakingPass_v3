@@ -13,7 +13,6 @@ export const PartTwoSection = ({ data }: Data) => {
 
     return (
         <section className=" my-10">
-            <h3 className=" text-center text-[1.2rem] mb-5 text-text-light font-(family-name:--font-oswald)">PART 2&3</h3>
             <ul className=" flex flex-col gap-10 mx-auto">
                 {
                     topics.map((topic, index) => (
@@ -24,14 +23,13 @@ export const PartTwoSection = ({ data }: Data) => {
                         </li>
                     ))
                 }
-                <li>
-                    <Link href={`/part2/Person`} className=" text-[1.2rem] flex items-center justify-center gap-0 hover:gap-1 transition-all duration-200 text-blue-primary ">
-                        More
-                        <RiArrowRightSLine></RiArrowRightSLine>
-                    </Link>
-                </li>
-
             </ul>
+            <div className=' flex justify-center my-10'>
+                <Link href={`/part2/Person`} className=" text-[1.2rem] flex items-center justify-center gap-0 hover:gap-1 transition-all duration-200 text-blue-primary ">
+                    More Part 2 Questions
+                    <RiArrowRightSLine></RiArrowRightSLine>
+                </Link>
+            </div>
         </section>
     )
 }

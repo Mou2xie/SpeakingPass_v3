@@ -25,15 +25,15 @@ export default async function PartTwoPage({ params }: { params: Promise<{ catego
 
     return (
         <>
-            <section className=" flex justify-around items-center h-20 lg:h-30 mt-20 lg:mt-30">
+            <section className=" flex justify-around items-center h-30 lg:mt-30">
                 <h1 className="font-(family-name:--font-breeSerif) flex flex-col">
-                    <span className=" text-3xl lg:text-[2.4rem] text-text-strong">IELTS Speaking Part 2 Topics</span>
+                    <span className=" text-3xl lg:text-[2.4rem] text-text-strong">IELTS Speaking Part 2 Questions</span>
                     <span className=" lg:text-2xl text-text-light mt-1">Latest & Past Questions</span>
                 </h1>
                 <Image src='/egg2.svg' alt="Two cute eggs icon representing new ideas" width={100} height={100} className=" w-20 lg:w-30" ></Image>
             </section>
             <hr className=" text-[#DCE4EC] my-5 lg:my-8" />
-            <ul className=" flex gap-5 lg:gap-20 justify-center my-5 lg:my-10">
+            <ul className=" flex justify-around lg:justify-center lg:gap-15 my-8">
                 {
                     ['Person', 'Object', 'Activity', 'Place'].map((item, index) => {
                         return (
@@ -46,15 +46,15 @@ export default async function PartTwoPage({ params }: { params: Promise<{ catego
                     })
                 }
             </ul>
-            <ul className=" flex flex-col gap-10 mb-10 lg:w-3/4 lg:mx-auto">
+            <ul className=" flex flex-col gap-10 mb-10 lg:w-4/5 lg:mx-auto">
                 {
                     _topic.map((topic, index) => (
-                        <li key={index} className=" font-(family-name:--font-ptSerif) ">
+                        <li key={index} >
                             <Link href={`/part2/question/${encodeURLSegment(topic.topic)}`} target="_blank">
-                                <span className=" inline text-[1.2rem] line-clamp-2 text-text-main hover:text-blue-primary transition duration-200">{topic.topic}</span>
+                                <span className=" inline text-[1.2rem] line-clamp-2 font-(family-name:--font-ptSerif) text-text-main hover:text-blue-primary transition duration-200">{topic.topic}</span>
                                 {
                                     topic.type === 'CURRENT' &&
-                                    <span className=" text-red-500 text-[1.0rem] font-(family-name:--font-oswald) ml-3 ">{CURRENT_MONTH}</span>
+                                    <span className=" border border-red-500 text-red-500 px-1 py-[2px] rounded-[5px] text-[0.9rem] font-sans ml-3">{CURRENT_MONTH}</span>
                                 }
                             </Link>
                         </li>

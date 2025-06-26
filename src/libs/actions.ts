@@ -41,17 +41,17 @@ export async function getAllPart1Categories(): Promise<{ category: string; type:
     return data ?? [];
 }
 
-export async function getPart1QuestionsByCategory(category: string): Promise<{ topic: string; v3_part1_category: { type: string | null } }[]> {
+export async function getPart1QuestionsByCategory(category: string): Promise<{ topic: string; answer: string | null; v3_part1_category: { type: string | null } }[]> {
     let { data, error } = await supabase
         .from('v3_part1_topic')
-        .select('topic, v3_part1_category(type)')
+        .select('topic, answer, v3_part1_category(type)')
         .eq('category', category);
 
     if (error) {
         throw error
     }
 
-    return data as unknown as { topic: string; v3_part1_category: { type: string | null } }[];
+    return data as unknown as { topic: string; answer: string | null; v3_part1_category: { type: string | null } }[];
 }
 
 export async function getPart2TopicsByCategory(category: string): Promise<{ topic: string, type: string | null }[]> {
