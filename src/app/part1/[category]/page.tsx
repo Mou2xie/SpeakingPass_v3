@@ -42,7 +42,7 @@ export default async function PartOneDetail({ params }: { params: Promise<{ cate
             <ul className=" my-5 flex flex-col gap-3 font-sans text-blue-primary underline text-[1.1rem] font-semibold">
                 <li>
                     <Link href={`/part1`} >
-                        Latest Part 1 Topics for {CURRENT_MONTH} 🔥  
+                        Latest Part 1 Topics for {CURRENT_MONTH} 🔥
                     </Link>
                 </li>
                 <li>
@@ -66,6 +66,7 @@ const QuestionSection = ({ question, index }: {
     question: {
         topic: string;
         answer: string | null;
+        tip: string | null;
         v3_part1_category: {
             type: string | null;
         };
@@ -88,6 +89,19 @@ const QuestionSection = ({ question, index }: {
                         <SubTitle>Sample Answer</SubTitle>
                         <p className=" font-(family-name:--font-ptSerif) text-text-main text-[1.1rem]">
                             {question.answer}
+                        </p>
+                    </>
+                )
+
+            }
+
+            {
+                question.tip &&
+                (
+                    <>
+                        <SubTitle>Tips & Strategies</SubTitle>
+                        <p className=" font-(family-name:--font-ptSerif) text-text-main text-[1.1rem]">
+                            {question.tip}
                         </p>
                     </>
                 )
