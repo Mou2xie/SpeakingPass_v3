@@ -54,16 +54,32 @@ export default async function PartTwoDetail({ params }: { params: Promise<{ topi
                         </>
                     )
                 }
-                <h3 className=" font-(family-name:--font-breeSerif) text-[1.4rem] text-text-strong mt-10">Part 3 Example Question</h3>
-                <ol className=" list-decimal list-inside mt-5">
-                    {
-                        question?.part3.map((item, index) => (
-                            <li key={index} className="text-[1.1rem] text-text-light font-(family-name:--font-ptSerif) my-2">
-                                <h2 className=" inline">{item}</h2>
-                            </li>
-                        ))
-                    }
-                </ol>
+                {
+                    question?.tip &&
+                    (
+                        <>
+                            <SubTitle>Tips & Strategies</SubTitle>
+                            <p className=" font-(family-name:--font-ptSerif) text-text-main text-[1.1rem]">{question.tip}</p>
+                        </>
+                    )
+                }
+                {
+                    question?.part3 &&
+                    (
+                        <>
+                            <h3 className=" font-(family-name:--font-breeSerif) text-[1.4rem] text-text-strong mt-10">Part 3 Example Question</h3>
+                            <ol className=" list-decimal list-inside mt-5">
+                                {
+                                    question?.part3.map((item, index) => (
+                                        <li key={index} className="text-[1.1rem] text-text-light font-(family-name:--font-ptSerif) my-2">
+                                            <h2 className=" inline">{item}</h2>
+                                        </li>
+                                    ))
+                                }
+                            </ol>
+                        </>
+                    )
+                }
             </section>
 
             <ul className=" my-5 flex flex-col gap-3 font-sans text-blue-primary underline text-[1.1rem] font-semibold">
