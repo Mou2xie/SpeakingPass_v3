@@ -13,8 +13,8 @@ export async function generateMetadata(
     const category = decodeURLSegment((await params).category);
 
     return {
-        title: `${category} Questions - IELTS Speaking Part 1 Practice | SpeakingPass`,
-        description: `Master the '${category}' topic for IELTS Speaking Part 1. Our complete list features all latest and past questions to ensure you're fully prepared. Practice your answers and walk into the exam with confidence!`,
+        title: `${category} Questions - IELTS Speaking Part 1 Topic Bank and Answer | SpeakingPass`,
+        description: `Master the '${category}' topic for IELTS Speaking Part 1. Our complete list features all latest and past questions to ensure you're fully prepared. Check our sample answers and strategies to boost your score. `,
     }
 }
 

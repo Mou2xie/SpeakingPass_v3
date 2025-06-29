@@ -8,8 +8,8 @@ import type { Metadata } from "next";
 import { Ad } from "@/components/Ad";
 
 export const metadata: Metadata = {
-    title: `All latest and past IELTS Speaking Part 1 Topics ${CURRENT_MONTH} | SpeakingPass`,
-    description: `Looking for IELTS Speaking Part 1 topics? Explore our definitive list covering everything from past classics to the very latest questions. All new topics for ${CURRENT_MONTH} are clearly marked. Your complete resource to practice and prepare.`,
+    title: `All latest and past IELTS Speaking Part 1 Topics and Answers | SpeakingPass`,
+    description: `IELTS speaking Part 1 topics bank covers every current and past questions as well as sample answer and strategy. All new topics for ${CURRENT_MONTH} are clearly marked. `,
 };
 
 export default async function PartOnePage() {

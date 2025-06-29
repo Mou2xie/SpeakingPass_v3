@@ -24,8 +24,8 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "SpeakingPass - IELTS Speaking Question Bank",
-  description: "A comprehensive collection of recent and past IELTS Speaking topics and questions for Part 1, Part 2, and Part 3 — ideal for effective practice and exam preparation.",
+  title: "SpeakingPass - IELTS Speaking Question / Topics Bank",
+  description: "Ace the IELTS Speaking test! Access a complete database of all current and historical questions for Part 1, 2 & 3, with Band 8+ sample answers and expert strategies.",
 };
 
 export default async function RootLayout({
@@ -62,5 +62,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
-

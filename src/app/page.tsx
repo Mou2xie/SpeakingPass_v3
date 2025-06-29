@@ -10,8 +10,8 @@ import { Ad } from "@/components/Ad";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "latest IELTS Speaking Topics & Questions | SpeakingPass",
-    description: "Boost your IELTS Speaking score! Access a huge bank of recent and past questions for Part 1, 2, & 3. Updated for 2025. Your #1 free resource for exam practice. Start preparing on SpeakingPass now!"
+    title: "latest IELTS Speaking Topics / Questions with Answers and Strategies | SpeakingPass",
+    description: "Boost your IELTS Speaking score! Access a huge bank of recent and past questions for Part 1, 2, & 3. Check sample answers and strategies. Updated for 2025. Your #1 free resource for exam practice."
 };
 
 export default async function Page() {

@@ -11,8 +11,8 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const { category } = await params;
     return {
-        title: `${category}: IELTS Speaking Part 2 Topic Collection | SpeakingPass`,
-        description: `Master all IELTS Part 2 topics on how to '${category}'. This comprehensive collection features new and classic cue cards within this category. Learn the common structure and vocabulary to confidently answer any related question.`,
+        title: `${category}: IELTS Speaking Part 2 Topics and Answers | SpeakingPass`,
+        description: `Master all IELTS Part 2 topics on how to '${category}'. This comprehensive collection features new and classic cue cards within this topic. Get to know the sample answer and useful tip to confidently answer any related question.`,
     }
 }
 
