@@ -33,23 +33,28 @@ export default async function RootLayout({
 }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      {/* Google Analytics */}
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-SDFVJVC4EX"
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+      <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8107883456107875"
+          crossOrigin="anonymous"></script>
+        {/* Google Analytics */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-SDFVJVC4EX"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-SDFVJVC4EX');
           `,
-        }}
-      />
+          }}
+        />
+
+      </head>
       <body
         className={`${breeSerif.variable} ${ptSerif.variable} ${oswald.variable} antialiased`}
       >
