@@ -38,9 +38,6 @@ export const NavBar = () => {
                 <li className="hover:text-blue-primary transition-all duration-300">
                     <Link href={`/part2/Person`}>Part 2&3</Link>
                 </li>
-                <li className="text-[#61ECD7] hover:text-[#4dc1b7] transition duration-300">
-                    <Link href={'https://www.lingopick.net/'} target="_blank"> Vocabulary Booster 🚀</Link>
-                </li>
             </ul>
         </nav>
     );

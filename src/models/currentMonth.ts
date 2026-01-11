@@ -1,2 +1,4 @@
-// need to change every time new topics for the current season are added
-export const CURRENT_MONTH = 'Sep - Nov';
+import { getCurrentSeason } from "@/libs/dateUtils";
+
+// Automatically calculated based on the current date
+export const CURRENT_MONTH = getCurrentSeason();
