@@ -11,7 +11,7 @@
 **The Solution:** SpeakingPass V3 addresses this by providing a centralized, meticulously organized database of **current** and **past** speaking topics. It offers a structured preparation path with Band 8+ sample answers, ensuring candidates spend less time searching and more time practicing.
 
 **Product Philosophy:**
-*   **Relevance First:** Topics are strictly categorized by season (e.g., "Sep - Nov") so users know exactly what to study.
+*   **Relevance First:** Topics are strictly categorized by season (e.g., "Sep - Dec") so users know exactly what to study.
 *   **Accessibility:** A clean, mobile-first design ensures study on the go.
 *   **Performance:** Fast load times and SEO optimization ensure the content is discoverable and accessible instantly.
 
@@ -36,7 +36,9 @@ Built with a focus on performance, scalability, and modern web standards.
 *   **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) & [DaisyUI v5](https://daisyui.com/) - For rapid, utility-first, and consistent UI development.
 *   **Backend/Database:** [Supabase](https://supabase.com/) - Providing a scalable PostgreSQL database for dynamic content management.
 *   **Icons:** [Remix Icon](https://remixicon.com/)
-*   **Analytics:** Google Analytics 4 (GA4)
+*   **State Management:** [Zustand](https://zustand.docs.pmnd.rs/)
+*   **SEO:** [next-sitemap](https://github.com/iamvishnusankar/next-sitemap)
+*   **Analytics:** Google Analytics 4 (GA4) & Google AdSense
 
 ## ⚡️ Getting Started
 
@@ -60,17 +62,23 @@ Follow these steps to set up the project locally.
     ```
 
 3.  **Configure Environment:**
-    Create a `.env.local` file in the root directory and add your Supabase keys:
-    ```env
-    SUPABASE_URL=your_project_url
-    SUPABASE_KEY=your_anon_key
-    ```
+     The repo includes a `.env` file with shared Supabase credentials. To use your own project, create a `.env.local` override:
+     ```env
+     SUPABASE_URL=your_project_url
+     SUPABASE_KEY=your_anon_key
+     ```
 
 4.  **Run Development Server:**
-    ```bash
-    npm run dev
-    ```
-    Open [http://localhost:3000](http://localhost:3000) to view the application.
+     ```bash
+     npm run dev
+     ```
+     Open [http://localhost:3000](http://localhost:3000) to view the application.
+
+5.  **Build for Production:**
+     ```bash
+     npm run build
+     ```
+     This automatically generates the sitemap via `next-sitemap` as a postbuild step.
 
 ## 💡 Highlights & Engineering Insights
 
@@ -83,7 +91,7 @@ Transitioned to the **App Router** to leverage **React Server Components (RSC)**
 *   **Sitemap Generation:** Automated sitemap creation (`next-sitemap`) ensures new topics are indexed immediately upon publication.
 
 ### 3. Scalable Data Management
-Integration with **Supabase** allows for real-time updates to the question bank without redeploying the application. The content structure allows for easy "season rotations," updating the `CURRENT_MONTH` constant to instantly reflect the new exam cycle across the entire site.
+Integration with **Supabase** allows for real-time updates to the question bank without redeploying the application. The `CURRENT_MONTH` value is automatically derived from the current date (`src/libs/dateUtils.ts`), so the site reflects the correct exam season without manual intervention at each rotation.
 
 ## 🔮 Future Roadmap
 
